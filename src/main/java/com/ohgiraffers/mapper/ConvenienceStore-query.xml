@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="checkManagerId">
+        SELECT
+            A.MANAGER_NAME
+        FROM STORE_MANAGER A
+        WHERE A.MANAGER_ID = ?
+    </entry>
+    <entry key="selectAllProductList">
+        SELECT
+            *
+        FROM convenience_store
+    </entry>
+</properties>
