@@ -14,5 +14,6 @@
 <p>7. 상품은 상품코드, 상품이름, 가격, 상품 카테고리, 재고여부를 가지고 있다.</p>
 <p>8. 상품 카테고리에는 식사, 음료, 주류, 위생용품, 기타 가 있다</p>
 
-![image](https://github.com/user-attachments/assets/8093da1b-12f6-467a-b88c-2e8fb6fbbc58)
+![image](https://github.com/user-attachments/assets/8715283f-1f74-46e6-8b1b-4358de37c6c4)
+
 
