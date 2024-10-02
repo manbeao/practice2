@@ -4,7 +4,8 @@
     <comment/>
     <entry key="checkManagerId">
         SELECT
-            A.MANAGER_NAME
+            A.MANAGER_NAME,
+            A.MANAGER_ID
         FROM STORE_MANAGER A
         WHERE A.MANAGER_ID = ?
     </entry>
@@ -12,5 +13,10 @@
         SELECT
             *
         FROM convenience_store
+    </entry>
+    <entry key="staffAllInformation">
+        SELECT
+                *
+        FROM STAFF
     </entry>
 </properties>
