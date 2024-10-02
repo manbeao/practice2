@@ -19,4 +19,10 @@
                 *
         FROM STAFF
     </entry>
+    <entry key="myStaffList">
+        SELECT
+                *
+        FROM STAFF
+        WHERE MANAGER_NAME = ?
+    </entry>
 </properties>
