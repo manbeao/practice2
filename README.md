@@ -16,9 +16,9 @@
 <p>8. 상품 카테고리에는 식사, 음료, 주류, 위생용품, 기타 가 있다</p>
 
 <p>논리 모델</p>
-![image](https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0)
+<img href =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
 <p>물리 모델</p>
-![image](https://github.com/user-attachments/assets/bb22e97c-20c7-45be-92bd-4b6a7f42091d)
+<img href =https://github.com/user-attachments/assets/bb22e97c-20c7-45be-92bd-4b6a7f42091d>
 
 
 
