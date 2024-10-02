@@ -17,11 +17,13 @@ public class Application {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("==== 편의점 관리 프로그램 ====");
+//        dao.checkManagerId(con);
+        if (dao.checkManagerId(con).size() ==1){
 
         while (true){
-            System.out.println();
-        System.out.println("==== 편의점 관리 프로그램 ====");
-        dao.checkManagerId(con);
+        System.out.println();
+
         System.out.println("==== 프로그램 메뉴 ====");
         System.out.println();
         System.out.println("==1. 상품정보 전체 조회");
@@ -50,12 +52,32 @@ public class Application {
                 break;
             case 3:
                 dao.myStaffList(con);
+                break;
+
+            case 4:
+                dao.insertProduct(con);
+                break;
+
+            case 5 :
+
+
+            case 6 :
+                dao.searchProduct(con);
+                break;
+
+            case 7:  dao.deleteProduct(con);
+                break;
+
         }
             if (num==8){
                 System.out.println("프로그램을 종료합니다");
                 break;
             }
     }
+        }else {
+            System.out.println("이용해 주셔서 감사합니다");
+
+        }
 
     }
 }

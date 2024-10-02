@@ -21,8 +21,48 @@
     </entry>
     <entry key="myStaffList">
         SELECT
-                *
-        FROM STAFF
-        WHERE MANAGER_NAME = ?
+                A.STAFF_NAME,
+                A.STAFF_ID
+        FROM STAFF A
+        WHERE A.MANAGER_NAME = ?
     </entry>
+
+    <entry key="insertProduct">
+        INSERT INTO convenience_store
+        (
+        PRODUCT_NAME,
+        PRODUCT_PRICE,
+        PRODUCT_CATEGORY,
+        PRODUCT_STATUS
+        )
+        VALUES
+        (
+        ?,
+        ?,
+        ?,
+        ?
+        )
+    </entry>
+
+    <entry key="searchProduct">
+        SELECT
+            *
+        FROM convenience_store
+        WHERE PRODUCT_CODE = ?
+    </entry>
+
+    <entry key="changeProduct">
+        UPDATE convenience_store
+        SET PRODUCT_NAME = ?,
+        PRODUCT_PRICE =?,
+        PRODUCT_CATEGORY =?,
+        PRODUCT_STATUS =?
+        WHERE MENU_CODE =?
+    </entry>
+
+    <entry key="deleteProduct">
+    DELETE
+    FROM convenience_store
+    WHERE PRODUCT_NAME = ?
+</entry>
 </properties>

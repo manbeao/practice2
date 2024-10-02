@@ -43,7 +43,7 @@ INSERT INTO CONVENIENCE_STORE(PRODUCT_CODE,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CA
 DROP TABLE IF EXISTS STORE_MANAGER;
 CREATE TABLE IF NOT EXISTS STORE_MANAGER(
                                             MANAGER_ID INT PRIMARY KEY AUTO_INCREMENT COMMENT '관리자 ID',
-                                            MANAGER_NAME VARCHAR(20) NOT NULL COMMENT '관리자이름',
+                                            MANAGER_NAME VARCHAR(20) NOT NULL UNIQUE COMMENT '관리자이름',
     MANAGER_PHONE VARCHAR(30) NOT NULL COMMENT '관리자 전화번호',
     PRODUCT_CATEGORY VARCHAR (30) NOT NULL COMMENT '상품 카테고리',
     PRODUCT_CODE INT COMMENT '상품관리코드',
@@ -65,16 +65,16 @@ CREATE TABLE IF NOT EXISTS STAFF(
     STAFF_PHONE VARCHAR(30) NOT NULL COMMENT '직원 전화번호',
     HIRE_DATE VARCHAR(30) NOT NULL COMMENT '입사일',
     WORK_STATUS VARCHAR(5) CHECK(WORK_STATUS IN ('O','X')) COMMENT '출근 여부',
-    MANAGER_ID INT COMMENT '관리자 ID',
-    FOREIGN KEY(MANAGER_ID)
-    REFERENCES STORE_MANAGER(MANAGER_ID)
+    MANAGER_NAME VARCHAR(20) COMMENT '관리자이름',
+    FOREIGN KEY(MANAGER_NAME)
+    REFERENCES STORE_MANAGER(MANAGER_NAME)
     )ENGINE=INNODB;
 
-INSERT INTO STAFF(STAFF_ID,STAFF_NAME,STAFF_PHONE,HIRE_DATE,WORK_STATUS,MANAGER_ID) VALUES
-                                                                                        (NULL, '이재현', '01019980913', '2016.04.08', 'O', 2),
-                                                                                        (NULL, '황인준', '01020000323', '2016.08.25', 'O', 1),
-                                                                                        (NULL, '윤재호', '01046358267', '2018.03.19', 'O', 3),
-                                                                                        (NULL, '박상혁', '01019990926', '2020.11.03', 'X', 4),
-                                                                                        (NULL, '최호승', '01075641238', '2021.01.18', 'O', 5),
-                                                                                        (NULL, '김재범', '01088672343', '2022.05.06', 'O', 1),
-                                                                                        (NULL, '윤나무', '01099845389', '2023.06.22', 'X', 1);
+INSERT INTO STAFF(STAFF_ID,STAFF_NAME,STAFF_PHONE,HIRE_DATE,WORK_STATUS,MANAGER_NAME) VALUES
+                                                                                          (NULL, '이재현', '01019980913', '2016.04.08', 'O', '김민재'),
+                                                                                          (NULL, '황인준', '01020000323', '2016.08.25', 'O', '이은서'),
+                                                                                          (NULL, '윤재호', '01046358267', '2018.03.19', 'O', '김나연'),
+                                                                                          (NULL, '박상혁', '01019990926', '2020.11.03', 'X', '이은서'),
+                                                                                          (NULL, '최호승', '01075641238', '2021.01.18', 'O', '인지예'),
+                                                                                          (NULL, '김재범', '01088672343', '2022.05.06', 'O', '이경주'),
+                                                                                          (NULL, '윤나무', '01099845389', '2023.06.22', 'X', '이은서');
