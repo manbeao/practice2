@@ -57,7 +57,7 @@
         PRODUCT_PRICE =?,
         PRODUCT_CATEGORY =?,
         PRODUCT_STATUS =?
-        WHERE MENU_CODE =?
+        WHERE PRODUCT_CODE =?
     </entry>
 
     <entry key="deleteProduct">

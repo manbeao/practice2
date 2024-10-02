@@ -213,7 +213,41 @@ public class ConvenienceStoreDAO {
         Scanner sc = new Scanner(System.in);
         PreparedStatement ptsmt = null;
         int result = 0;
-        
+
+        String query = prop.getProperty("changeProduct");
+
+        System.out.print("변경하려는 상품의 상품코드를 입력하세요 : ");
+        int productCode = sc.nextInt();
+        System.out.print("상품의 변경 된 이름을 입력하세요 : ");
+        sc.nextLine();
+        String productName = sc.nextLine();
+        System.out.print("상품의 변경 된 가격을 입력하세요 : ");
+        int productPrice = sc.nextInt();
+        System.out.print("상품의 변경 된 카테고리를 입력하세요(식사/음료/주류/위생용품/기타) : ");
+        sc.nextLine();
+        String productCategory = sc.nextLine();
+        System.out.print("상품의 변경된 재고 여부를 입력하세요(O/X) : ");
+        String productStatus = sc.nextLine();
+
+        try {
+            ptsmt = con.prepareStatement(query);
+            ptsmt.setString(1,productName);
+            ptsmt.setInt(2,productPrice);
+            ptsmt.setString(3,productCategory);
+            ptsmt.setString(4,productStatus);
+            ptsmt.setInt(5,productCode);
+
+            result = ptsmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(ptsmt);
+        }if (result>0){
+            System.out.println("상품을 성공적으로 변경했습니다");
+        }else {
+            System.out.println("상품 변경에 실패했습니다");
+        }
     }
 
 

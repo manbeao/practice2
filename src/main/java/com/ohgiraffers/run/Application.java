@@ -59,7 +59,8 @@ public class Application {
                 break;
 
             case 5 :
-
+                dao.changeProduct(con);
+                break;
 
             case 6 :
                 dao.searchProduct(con);
