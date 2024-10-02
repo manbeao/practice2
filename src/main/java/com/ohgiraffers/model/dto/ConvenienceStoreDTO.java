@@ -59,7 +59,7 @@ public class ConvenienceStoreDTO {
 
     @Override
     public String toString() {
-        return "ConvenienceStoreDTO{" +
+        return "편의점 {" +
                 "상품관리 코드 : " + code +
                 ", 상품 이름 : '" + name + '\'' +
                 ", 상품 가격 : " + price +

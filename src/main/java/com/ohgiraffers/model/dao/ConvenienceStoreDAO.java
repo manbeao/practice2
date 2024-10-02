@@ -1,6 +1,8 @@
 package com.ohgiraffers.model.dao;
 
 import com.ohgiraffers.model.dto.ConvenienceStoreDTO;
+import com.ohgiraffers.model.dto.ManagerDTO;
+import com.ohgiraffers.model.dto.StaffDTO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,6 +14,10 @@ import static com.ohgiraffers.common.JDBCTemplate.close;
 public class ConvenienceStoreDAO {
 
     private Properties prop = new Properties();
+
+    ConvenienceStoreDTO store = null;
+    ManagerDTO manager = null;
+    StaffDTO staff = null;
 
     //쿼리 불러오기
     public ConvenienceStoreDAO(){
@@ -28,20 +34,31 @@ public class ConvenienceStoreDAO {
         Statement stmt = null;
         ResultSet rset = null;
 
+        List<ConvenienceStoreDTO> storeList = null;
 
         String query = prop.getProperty("selectAllProductList");
         try {
             stmt = con.createStatement();
             rset = stmt.executeQuery(query);
 
+            storeList = new ArrayList<>();
             while (rset.next()){
-                System.out.println("상품관리 코드 : " + rset.getInt("PRODUCT_CODE") + ", 상품 이름 : " + rset.getString("PRODUCT_NAME") + ", 상품가격 : " + rset.getInt("PRODUCT_PRICE") + ", 상품 카테고리 : " + rset.getString("PRODUCT_CATEGORY") + ", 재고 여부 : " + rset.getString("PRODUCT_STATUS"));
+                store = new ConvenienceStoreDTO();
+                store.setCode(rset.getInt("PRODUCT_CODE"));
+                store.setName(rset.getString("PRODUCT_NAME"));
+                store.setPrice(rset.getInt("PRODUCT_PRICE"));
+                store.setCategory(rset.getString("PRODUCT_CATEGORY"));
+                store.setProductStatus(rset.getString("PRODUCT_STATUS"));
+
+                storeList.add(store);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             close(stmt);
             close(rset);
+        }for (ConvenienceStoreDTO storeDTO : storeList){
+            System.out.println(storeDTO);
         }
     }
 
@@ -101,13 +118,24 @@ public class ConvenienceStoreDAO {
         Statement stmt = null;
         ResultSet rset = null;
 
+        List<StaffDTO> staffList = null;
         String query = prop.getProperty("staffAllInformation");
 
         try {
             stmt = con.createStatement();
             rset = stmt.executeQuery(query);
+            staffList = new ArrayList<>();
+
             while (rset.next()){
-                System.out.println("직원 ID : " + rset.getInt("STAFF_ID") + ", 직원 이름 : " + rset.getString("STAFF_NAME") + ", 직원 전화 번호 : " +  rset.getString("STAFF_PHONE") + ", 입사일 : " + rset.getString("HIRE_DATE") + ", 출근 여부 : " + rset.getString("WORK_STATUS") + ", 담당 관리자 : " + rset.getString("MANAGER_NAME"));
+                staff = new StaffDTO();
+                staff.setStaffId(rset.getInt("STAFF_ID"));
+                staff.setStaffName(rset.getString("STAFF_NAME"));
+                staff.setStaffPhone(rset.getString("STAFF_PHONE"));
+                staff.setHireDate(rset.getString("HIRE_DATE"));
+                staff.setWorkStatus(rset.getString("WORK_STATUS"));
+                staff.setManagerName(rset.getString("MANAGER_NAME"));
+
+                staffList.add(staff);
             }
 
         } catch (SQLException e) {
@@ -115,6 +143,8 @@ public class ConvenienceStoreDAO {
         }finally {
             close(stmt);
             close(rset);
+        }for (StaffDTO staffDTO : staffList){
+            System.out.println(staffDTO);
         }
     }
 
@@ -124,41 +154,57 @@ public class ConvenienceStoreDAO {
         PreparedStatement ptsmt = null;
         ResultSet rset = null;
 
+        List<StaffDTO> staffList = null;
+
         System.out.print( "관리자 이름을 입력하세요 : ");
         String managerName = sc.nextLine();
         String query = prop.getProperty("myStaffList");
         try {
             ptsmt = con.prepareStatement(query);
             ptsmt.setString(1,managerName);
-
             rset = ptsmt.executeQuery();
 
             System.out.println(managerName + "님이 관리하는 직원은 다음과 같습니다");
             System.out.println();
+
+            staffList = new ArrayList<>();
             while (rset.next()){
-                System.out.println("직원 이름은 " + rset.getString("STAFF_NAME")+ "이고 직원 ID는 " + rset.getInt("STAFF_ID") + "입니다");
+                staff = new StaffDTO();
+                staff.setStaffName(rset.getString("STAFF_NAME"));
+                staff.setStaffId(rset.getInt("STAFF_ID"));
+                staff.setStaffPhone(rset.getString("STAFF_PHONE"));
+                staff.setHireDate(rset.getString("HIRE_DATE"));
+                staff.setWorkStatus(rset.getString("WORK_STATUS"));
+                staff.setManagerName(rset.getString("MANAGER_NAME"));
+
+                staffList.add(staff);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
             close(ptsmt);
             close(rset);
+        }for (StaffDTO staffLi : staffList){
+            System.out.println(staffLi);
         }
 
     }
 
 
-    public void StaffManagement(Connection con){
+    public void staffManagement(Connection con){
         Scanner sc = new Scanner(System.in);
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         int result =0;
+
+        List<StaffDTO> staffList = null;
 
         System.out.println("1. 직원 추가  2. 직원변경");
         System.out.println("3. 직원 검색  4. 직원삭제");
         System.out.println();
         System.out.print("실행할 메뉴를 입력하세요 : ");
         int num = sc.nextInt();
+
 
         switch (num){
             case 1:
@@ -174,14 +220,17 @@ public class ConvenienceStoreDAO {
                 System.out.print("추가할 직원을 관리하는 관리자의 이름을 입력하세요 : ");
                 String managerName = sc.nextLine();
 
-                String query = prop.getProperty("AddStaff");
+                StaffDTO newStaff = new StaffDTO(staffName,staffPhone,staffHireDate,staffWorkStatus,managerName);
+
+                String query = prop.getProperty("addStaff");
                 try {
+                    staff = new StaffDTO();
                     pstmt = con.prepareStatement(query);
-                    pstmt.setString(1,staffName);
-                    pstmt.setString(2,staffPhone);
-                    pstmt.setString(3,staffHireDate);
-                    pstmt.setString(4,staffWorkStatus);
-                    pstmt.setString(5,managerName);
+                    pstmt.setString(1,newStaff.getStaffName());
+                    pstmt.setString(2,newStaff.getStaffPhone());
+                    pstmt.setString(3,newStaff.getHireDate());
+                    pstmt.setString(4,newStaff.getWorkStatus());
+                    pstmt.setString(5,newStaff.getManagerName());
 
                     result = pstmt.executeUpdate();
 
@@ -290,6 +339,8 @@ public class ConvenienceStoreDAO {
         String productCategory = sc.nextLine();
         System.out.print("추가할 상품의 재고 여부를 입력하세요(O/X) : ");
         String productStatus = sc.nextLine();
+
+
         try {
             pstmt=con.prepareStatement(query);
             pstmt.setString(1,productName);

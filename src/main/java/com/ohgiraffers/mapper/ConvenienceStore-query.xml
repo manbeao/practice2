@@ -21,13 +21,12 @@
     </entry>
     <entry key="myStaffList">
         SELECT
-                A.STAFF_NAME,
-                A.STAFF_ID
+                *
         FROM STAFF A
         WHERE A.MANAGER_NAME = ?
     </entry>
 
-    <entry key="AddStaff">
+    <entry key="addStaff">
         INSERT INTO STAFF
         (
         STAFF_NAME,

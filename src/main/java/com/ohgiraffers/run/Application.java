@@ -56,7 +56,7 @@ public class Application {
                 break;
 
             case 4:
-                dao.StaffManagement(con);
+                dao.staffManagement(con);
                 break;
 
 
