@@ -27,6 +27,48 @@
         WHERE A.MANAGER_NAME = ?
     </entry>
 
+    <entry key="AddStaff">
+        INSERT INTO STAFF
+        (
+        STAFF_NAME,
+        STAFF_PHONE,
+        HIRE_DATE,
+        WORK_STATUS,
+        MANAGER_NAME
+        )
+        VALUES
+        (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+        )
+    </entry>
+
+    <entry key="changeStaff">
+        UPDATE STAFF
+        SET STAFF_NAME = ?,
+        STAFF_PHONE =?,
+        HIRE_DATE =?,
+        WORK_STATUS =?,
+        MANAGER_NAME =?
+        WHERE STAFF_ID =?
+    </entry>
+
+    <entry key="searchStaff">
+        SELECT
+                *
+        FROM STAFF
+        WHERE STAFF_ID = ?
+    </entry>
+
+    <entry key="deleteStaff">
+        DELETE
+        FROM STAFF
+        WHERE STAFF_ID = ?
+    </entry>
+
     <entry key="insertProduct">
         INSERT INTO convenience_store
         (
@@ -44,11 +86,39 @@
         )
     </entry>
 
-    <entry key="searchProduct">
+    <entry key="searchProductCode">
         SELECT
             *
         FROM convenience_store
         WHERE PRODUCT_CODE = ?
+    </entry>
+
+    <entry key="searchProductName">
+        SELECT
+            *
+        FROM convenience_store
+        WHERE PRODUCT_NAME = ?
+    </entry>
+
+    <entry key="searchProductPrice">
+        SELECT
+            *
+        FROM convenience_store
+        WHERE PRODUCT_PRICE = ?
+    </entry>
+
+    <entry key="searchProductCategory">
+        SELECT
+            *
+        FROM convenience_store
+        WHERE PRODUCT_CATEGORY = ?
+    </entry>
+
+    <entry key="searchProductStatus">
+        SELECT
+        *
+        FROM convenience_store
+        WHERE PRODUCT_STATUS = ?
     </entry>
 
     <entry key="changeProduct">
