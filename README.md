@@ -15,6 +15,8 @@
 <p>7. 상품은 상품코드, 상품이름, 가격, 상품 카테고리, 재고여부를 가지고 있다.</p>
 <p>8. 상품 카테고리에는 식사, 음료, 주류, 위생용품, 기타 가 있다</p>
 
+<hr>
+
 <p>논리 모델</p>
 <img src =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
 <p>물리 모델</p>
