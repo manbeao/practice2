@@ -9,15 +9,6 @@ public class ConvenienceStoreDTO {
 
     public ConvenienceStoreDTO(){}
 
-    public ConvenienceStoreDTO(int code) {
-        this.code = code;
-
-    }
-
-    public ConvenienceStoreDTO(String name) {
-        this.name = name;
-    }
-
     public ConvenienceStoreDTO(int code, String name, int price, String category, String productStatus) {
         this.code = code;
         this.name = name;
