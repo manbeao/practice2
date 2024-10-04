@@ -34,6 +34,7 @@ public class ConvenienceStoreDAO {
         Statement stmt = null;
         ResultSet rset = null;
 
+        ConvenienceStoreDTO store = null;
         List<ConvenienceStoreDTO> storeList = null;
 
         String query = prop.getProperty("selectAllProductList");
@@ -67,7 +68,7 @@ public class ConvenienceStoreDAO {
         Scanner sc = new Scanner(System.in);
         PreparedStatement pstmt = null;
         ResultSet rset = null;
-
+        ManagerDTO managerDTO = null;
         List<Map<Integer, String>> checkList = null;
 
         try {
@@ -75,10 +76,10 @@ public class ConvenienceStoreDAO {
             int managerId = sc.nextInt();
 
             checkList = new ArrayList<>();
-
+            managerDTO = new ManagerDTO(managerId);
             String query = prop.getProperty("checkManagerId");
             pstmt = con.prepareStatement(query);
-            pstmt.setInt(1,managerId);
+            pstmt.setInt(1,managerDTO.getManagerId());
 
             rset= pstmt.executeQuery();
 
@@ -91,7 +92,7 @@ public class ConvenienceStoreDAO {
                     System.out.println();
                     System.out.println("관리자 코드 확인 완료 :  " + checkList);
 
-                    System.out.println("환영합니다 " + managerId + "번 관리자님");
+                    System.out.println("환영합니다 '" + managerDTO.getManagerId() + "번' 관리자님");
                 }
 
 
@@ -405,6 +406,8 @@ public class ConvenienceStoreDAO {
         ResultSet rset = null;
         List<ConvenienceStoreDTO> storeList = null;
         List<ConvenienceStoreDTO> storeList1 = null;
+        List<ConvenienceStoreDTO> storeList2 = null;
+        List<ConvenienceStoreDTO> storeList3 = null;
         ConvenienceStoreDTO product = null;
         int result = 0;
 
@@ -415,19 +418,22 @@ public class ConvenienceStoreDAO {
         System.out.print("상품을 검색할 방법을 입력하세요 : ");
         int num = sc.nextInt();
         switch (num){
+
+
             case 1 :
                 //편의점 테이블에서 상품코드로 상품조회
                 String query = prop.getProperty("searchProductCode");
                 System.out.print("검색할 상품의 상품코드를 입력하세요 : ");
                 int productCode = sc.nextInt();
+
                 try {
                     product = new ConvenienceStoreDTO(productCode);
                     pstmt = con.prepareStatement(query);
                     pstmt.setInt(1,product.getCode());
-
+                    storeList = new ArrayList<>();
                     rset = pstmt.executeQuery();
                     if (rset.next()){
-                        storeList = new ArrayList<>();
+
                         product.setName(rset.getString("PRODUCT_NAME"));
                         product.setPrice(rset.getInt("PRODUCT_PRICE"));
                         product.setCategory(rset.getString("PRODUCT_CATEGORY"));
@@ -445,6 +451,7 @@ public class ConvenienceStoreDAO {
                 System.out.println("상품코드가 '" + product.getCode() + " 번'인 상품 검색을 완료했습니다");
                 break;
 
+
             case 2 :
                 //편의점 테이블에서 상품이름으로 상품조회
                 String query1 = prop.getProperty("searchProductName");
@@ -452,13 +459,14 @@ public class ConvenienceStoreDAO {
                 sc.nextLine();
                 String productName = sc.nextLine();
                 product = new ConvenienceStoreDTO(productName);
+
                 try {
                     pstmt = con.prepareStatement(query1);
                     pstmt.setString(1,product.getName());
                     rset = pstmt.executeQuery();
-
+                    storeList1 = new ArrayList<>();
                     if (rset.next()){
-                        storeList1 = new ArrayList<>();
+
                         product.setCode(rset.getInt("PRODUCT_CODE"));
                         product.setName(rset.getString("PRODUCT_NAME"));
                         product.setPrice(rset.getInt("PRODUCT_PRICE"));
@@ -480,18 +488,29 @@ public class ConvenienceStoreDAO {
                 String query2 = prop.getProperty("searchProductPrice");
                 System.out.print("검색할 상품의 가격을 입력하세요 : ");
                 int productPrice = sc.nextInt();
+                product = new ConvenienceStoreDTO(productPrice);
 
                 try {
                     pstmt =con.prepareStatement(query2);
-                    pstmt.setInt(1,productPrice);
+                    pstmt.setInt(1,product.getPrice());
                     rset = pstmt.executeQuery();
+                    storeList2 = new ArrayList<>();
+
                     while (rset.next()){
-                        System.out.println("상품관리 코드 : " + rset.getInt("PRODUCT_CODE") + ", 상품 이름 : " + rset.getString("PRODUCT_NAME") + ", 상품가격 : " + rset.getInt("PRODUCT_PRICE") + ", 상품 카테고리 : " + rset.getString("PRODUCT_CATEGORY") + ", 재고 여부 : " + rset.getString("PRODUCT_STATUS"));
+                        product.setCode(rset.getInt("PRODUCT_CODE"));
+                        product.setName(rset.getString("PRODUCT_NAME"));
+                        product.setPrice(rset.getInt("PRODUCT_PRICE"));
+                        product.setCategory(rset.getString("PRODUCT_CATEGORY"));
+                        product.setProductStatus(rset.getString("PRODUCT_STATUS"));
+
+                        storeList2.add(product);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
-                }
-                System.out.println("가격이 " + productPrice + "인 상품 검색을 완료했습니다");
+                }for (ConvenienceStoreDTO priceList : storeList2){
+                System.out.println(priceList);
+            }
+                System.out.println("가격이 '" + product.getPrice() + " 원'인 상품 검색을 완료했습니다");
                 break;
 
             case 4 :
