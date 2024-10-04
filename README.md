@@ -1,3 +1,5 @@
+<h1>JDBC를 이용한 편의점 관리 프로그램</h1>
+<hr>
 <h2>프로그램 개요</h2>
 <h3>편의점의 상품을 조회, 추가, 삭제, 변경할수있는 관리자 전용 프로그램을 만들려고한다</h3>
 
@@ -14,7 +16,7 @@
 
 <hr>
 
-<p>논리 모델</p>
+<h3>논리 모델</h3>
 <img src =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
 <p>물리 모델</p>
 <img src =https://github.com/user-attachments/assets/bb22e97c-20c7-45be-92bd-4b6a7f42091d>
