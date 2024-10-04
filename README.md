@@ -2,7 +2,7 @@
 <hr>
 <h2>프로그램 개요</h2>
 <h3>편의점의 상품을 조회, 추가, 삭제, 변경할수있는 관리자 전용 프로그램을 만들려고한다</h3>
-
+<p>제작 기간 - 4일</p>
 <h4>시스템 요구 사항</h4>
 <p>1. 관리자는 각자 고유의 <b>식별자 코드를</b> 가지고 있다.</p>
 <p>2. 관리자 코드를 가지고 있지 않은 사람은 프로그램 이용이 불가능하다</p>
@@ -18,7 +18,7 @@
 
 <h3>논리 모델</h3>
 <img src =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
-<p>물리 모델</p>
+<h3>물리 모델</h3>
 <img src =https://github.com/user-attachments/assets/bb22e97c-20c7-45be-92bd-4b6a7f42091d>
 
 
