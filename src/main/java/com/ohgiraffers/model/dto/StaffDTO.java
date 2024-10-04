@@ -10,6 +10,14 @@ public class StaffDTO {
 
     public StaffDTO(){}
 
+    public StaffDTO(int staffId){
+        this.staffId = staffId;
+    }
+
+    public StaffDTO(String managerName) {
+        this.managerName = managerName;
+    }
+
     public StaffDTO(int staffId, String staffName, String staffPhone, String hireDate, String workStatus, String managerName) {
         this.staffId = staffId;
         this.staffName = staffName;
