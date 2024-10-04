@@ -95,10 +95,10 @@ public class ConvenienceStoreDAO {
                 }
 
 
-                }else {
-                    System.out.println();
-                    System.out.println("관리자 코드가 옳지 않습니다 프로그램을 종료합니다");
-                    System.out.println();
+            }else {
+                System.out.println();
+                System.out.println("관리자 코드가 옳지 않습니다 프로그램을 종료합니다");
+                System.out.println();
 
 
             }
@@ -208,6 +208,7 @@ public class ConvenienceStoreDAO {
 
         switch (num){
             case 1:
+                //직원 추가
                 System.out.print("추가할 직원의 이름을 입력 하세요 : ");
                 sc.nextLine();
                 String staffName = sc.nextLine();
@@ -243,11 +244,13 @@ public class ConvenienceStoreDAO {
                     System.out.println("직원 정보 등록에 실패했습니다");
                 }break;
 
+
             case 2:
+                //직원 변경
                 System.out.print("변경할 직원의 직원 ID를 입력 하세요 : ");
-                sc.nextLine();
-                String staffId = sc.nextLine();
+                int staffId = sc.nextInt();
                 System.out.print("변경된 직원의 이름을 입력하세요 : ");
+                sc.nextLine();
                 String staffNameCh = sc.nextLine();
                 System.out.print("변경된 직원의 전화번호를 입력하세요 : ");
                 String staffPhoneCh = sc.nextLine();
@@ -258,16 +261,17 @@ public class ConvenienceStoreDAO {
                 System.out.print("변경된 직원을 관리하는 관리자의 이름을 입력하세요 : ");
                 String managerNameCh = sc.nextLine();
 
+                StaffDTO changeStaff = new StaffDTO(staffId,staffNameCh,staffPhoneCh,staffHireDateCh,staffWorkStatusCh,managerNameCh);
                 String query1 = prop.getProperty("changeStaff");
                 try {
                     pstmt = con.prepareStatement(query1);
 
-                    pstmt.setString(1,staffNameCh);
-                    pstmt.setString(2,staffPhoneCh);
-                    pstmt.setString(3,staffHireDateCh);
-                    pstmt.setString(4,staffWorkStatusCh);
-                    pstmt.setString(5,managerNameCh);
-                    pstmt.setString(6,staffId);
+                    pstmt.setString(1,changeStaff.getStaffName());
+                    pstmt.setString(2,changeStaff.getStaffPhone());
+                    pstmt.setString(3,changeStaff.getHireDate());
+                    pstmt.setString(4,changeStaff.getWorkStatus());
+                    pstmt.setString(5,changeStaff.getManagerName());
+                    pstmt.setInt(6,changeStaff.getStaffId());
 
                     result = pstmt.executeUpdate();
 
@@ -281,32 +285,56 @@ public class ConvenienceStoreDAO {
 
 
             case 3:
+                //직원 검색
                 System.out.print("검색할 직원의 직원 ID를 입력하세요 : ");
                 int staffIdSh = sc.nextInt();
 
+                List<StaffDTO> searchList = null;
                 String query2 = prop.getProperty("searchStaff");
+                StaffDTO searchStaff = null;
+                System.out.println("직원 ID가 " + staffIdSh + "인 직원 정보는 다음과 같습니다");
+                System.out.println();
                 try {
+
                     pstmt = con.prepareStatement(query2);
                     pstmt.setInt(1,staffIdSh);
-
                     rset = pstmt.executeQuery();
+                    searchList = new ArrayList<>();
                     if (rset.next()){
-                        System.out.println("직원 ID : " + rset.getInt("STAFF_ID") + ", 직원 이름 : " + rset.getString("STAFF_NAME") + ", 직원 전화번호 : " + rset.getString("STAFF_PHONE") + ", 입사일 : " + rset.getString("HIRE_DATE") + ", 출근여부 : " + rset.getString("WORK_STATUS") + ", 관리자 이름 : " + rset.getString("MANAGER_NAME"));
+                        searchStaff = new StaffDTO();
+                        searchStaff.setStaffId(rset.getInt("STAFF_ID"));
+                        searchStaff.setStaffName(rset.getString("STAFF_NAME"));
+                        searchStaff.setStaffPhone(rset.getString("STAFF_PHONE"));
+                        searchStaff.setHireDate(rset.getString("HIRE_DATE"));
+                        searchStaff.setWorkStatus(rset.getString("WORK_STATUS"));
+                        searchStaff.setManagerName(rset.getString("MANAGER_NAME"));
+
+                        searchList.add(searchStaff);
+
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
-                }break;
+                }for (StaffDTO searchLi : searchList){
+                System.out.println(searchLi);
+            }break;
+
 
             case 4:
+                //직원 삭제
                 System.out.print("삭제할 직원의 직원 ID를 입력하세요 : ");
                 int staffIdDel = sc.nextInt();
                 String query3 = prop.getProperty("deleteStaff");
+
+                StaffDTO deleteStaff = null;
 
                 try {
                     pstmt =con.prepareStatement(query3);
                     pstmt.setInt(1,staffIdDel);
 
                     result = pstmt.executeUpdate();
+
+                    deleteStaff = new StaffDTO();
+
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
