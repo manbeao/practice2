@@ -13,6 +13,7 @@ import static com.ohgiraffers.common.JDBCTemplate.close;
 
 public class ConvenienceStoreDAO {
 
+    //
     private Properties prop = new Properties();
 
     ConvenienceStoreDTO store = null;

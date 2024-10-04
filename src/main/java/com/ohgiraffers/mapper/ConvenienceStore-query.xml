@@ -3,6 +3,7 @@
 <properties>
     <comment/>
     <entry key="checkManagerId">
+        <!---->
         SELECT
             A.MANAGER_NAME,
             A.MANAGER_ID

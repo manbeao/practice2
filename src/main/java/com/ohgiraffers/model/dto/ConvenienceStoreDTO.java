@@ -1,5 +1,5 @@
 package com.ohgiraffers.model.dto;
-
+//
 public class ConvenienceStoreDTO {
     private int code;
     private String name;

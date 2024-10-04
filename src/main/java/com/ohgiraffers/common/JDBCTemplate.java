@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class JDBCTemplate {
-
+//
     public static Connection getConnection(){
 
         Connection con = null;

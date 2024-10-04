@@ -1,5 +1,5 @@
 package com.ohgiraffers.model.dto;
-
+//
 public class ManagerDTO {
     private int managerId;
     private String managerName;
