@@ -9,9 +9,7 @@ public class ManagerDTO {
 
     public ManagerDTO(){}
 
-    public ManagerDTO(int managerId) {
-        this.managerId = managerId;
-    }
+
 
     public ManagerDTO(int managerId, String managerName, String managerPhone, String productCategory, int productCode) {
         this.managerId = managerId;

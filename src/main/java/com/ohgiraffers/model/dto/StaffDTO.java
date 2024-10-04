@@ -10,13 +10,6 @@ public class StaffDTO {
 
     public StaffDTO(){}
 
-    public StaffDTO(int staffId){
-        this.staffId = staffId;
-    }
-
-    public StaffDTO(String managerName) {
-        this.managerName = managerName;
-    }
 
     public StaffDTO(int staffId, String staffName, String staffPhone, String hireDate, String workStatus, String managerName) {
         this.staffId = staffId;
@@ -26,14 +19,7 @@ public class StaffDTO {
         this.workStatus = workStatus;
         this.managerName = managerName;
     }
-    public StaffDTO(String staffName, String staffPhone, String hireDate, String workStatus, String managerName) {
 
-        this.staffName = staffName;
-        this.staffPhone = staffPhone;
-        this.hireDate = hireDate;
-        this.workStatus = workStatus;
-        this.managerName = managerName;
-    }
 
     public int getStaffId() {
         return staffId;

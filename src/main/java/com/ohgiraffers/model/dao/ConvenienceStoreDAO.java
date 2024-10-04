@@ -13,7 +13,7 @@ import static com.ohgiraffers.common.JDBCTemplate.close;
 
 public class ConvenienceStoreDAO {
 
-    //
+
     private Properties prop = new Properties();
 
     ConvenienceStoreDTO store = null;
@@ -69,7 +69,6 @@ public class ConvenienceStoreDAO {
         Scanner sc = new Scanner(System.in);
         PreparedStatement pstmt = null;
         ResultSet rset = null;
-        ManagerDTO managerDTO = null;
         List<Map<Integer, String>> checkList = null;
 
         try {
@@ -77,10 +76,9 @@ public class ConvenienceStoreDAO {
             int managerId = sc.nextInt();
 
             checkList = new ArrayList<>();
-            managerDTO = new ManagerDTO(managerId);
             String query = prop.getProperty("checkManagerId");
             pstmt = con.prepareStatement(query);
-            pstmt.setInt(1,managerDTO.getManagerId());
+            pstmt.setInt(1,managerId);
 
             rset= pstmt.executeQuery();
 
@@ -93,7 +91,7 @@ public class ConvenienceStoreDAO {
                     System.out.println();
                     System.out.println("관리자 코드 확인 완료 :  " + checkList);
 
-                    System.out.println("환영합니다 '" + managerDTO.getManagerId() + "번' 관리자님");
+                    System.out.println("환영합니다 '" + managerId + "번' 관리자님");
                 }
 
 
@@ -340,12 +338,11 @@ public class ConvenienceStoreDAO {
                 int staffIdDel = sc.nextInt();
                 String query3 = prop.getProperty("deleteStaff");
 
-                StaffDTO deleteStaff = null;
 
                 try {
-                    deleteStaff = new StaffDTO(staffIdDel);
+                    StaffDTO deleteStaff = new StaffDTO();
                     pstmt =con.prepareStatement(query3);
-                    pstmt.setInt(1,deleteStaff.getStaffId());
+                    pstmt.setInt(1,staffIdDel);
 
                     result = pstmt.executeUpdate();
 

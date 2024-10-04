@@ -16,12 +16,7 @@ public class ConvenienceStoreDTO {
         this.category = category;
         this.productStatus = productStatus;
     }
-    public ConvenienceStoreDTO(String name, int price, String category, String productStatus) {
-        this.name = name;
-        this.price = price;
-        this.category = category;
-        this.productStatus = productStatus;
-    }
+
 
     public int getCode() {
         return code;
