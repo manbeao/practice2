@@ -614,7 +614,7 @@ public class ConvenienceStoreDAO {
 
     }
 
-    
+
     //편의점 테이블의 상품 변경
     public void changeProduct(Connection con){
         Scanner sc = new Scanner(System.in);
