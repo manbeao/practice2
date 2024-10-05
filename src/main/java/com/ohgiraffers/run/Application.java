@@ -18,7 +18,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("==== 편의점 관리 프로그램 ====");
-//        dao.checkManagerId(con);
+
         if (dao.checkManagerId(con).size() ==1){
 
             while (true){
