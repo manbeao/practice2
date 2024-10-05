@@ -30,6 +30,7 @@ public class ConvenienceStoreDAO {
 
     }
 
+
     //모든 편의점 테이블의 모든 상품 정보 조회
     public void selectAllProductlist (Connection con){
         Statement stmt = null;
@@ -63,6 +64,7 @@ public class ConvenienceStoreDAO {
             System.out.println(storeDTO);
         }
     }
+
 
     // 관리자 ID 확인
     public List<Map<Integer, String>> checkManagerId(Connection con){
@@ -149,6 +151,7 @@ public class ConvenienceStoreDAO {
             System.out.println(staffDTO);
         }
     }
+
 
     //관리자가 관리하는 직원의 정보 조회
     public void myStaffList(Connection con){
@@ -531,7 +534,6 @@ public class ConvenienceStoreDAO {
                 for (ConvenienceStoreDTO storeDTO : storeList2){
                     System.out.println(storeDTO);
                 }
-//                System.out.println(storeList2);
 
                 System.out.println("가격이 '" + productPrice+ " 원'인 상품 검색을 완료했습니다");
                 break;
@@ -612,6 +614,7 @@ public class ConvenienceStoreDAO {
 
     }
 
+    
     //편의점 테이블의 상품 변경
     public void changeProduct(Connection con){
         Scanner sc = new Scanner(System.in);
