@@ -567,8 +567,7 @@ public class ConvenienceStoreDAO {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }finally {
-                    close(pstmt);
-                    close(con);}
+                    close(pstmt);}
                 for (ConvenienceStoreDTO storeDTO : storeList3){
                     System.out.println(storeDTO);
                 }
