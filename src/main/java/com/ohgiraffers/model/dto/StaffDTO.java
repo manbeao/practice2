@@ -71,7 +71,7 @@ public class StaffDTO {
 
     @Override
     public String toString() {
-        return "직원 {" +
+        return "직원 정보{" +
                 "직원 ID : " + staffId +
                 ", 직원 이름 : '" + staffName + '\'' +
                 ", 직원 전화번호 : '" + staffPhone + '\'' +
