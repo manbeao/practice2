@@ -19,6 +19,6 @@
 <img src =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
 
 <h3>물리 모델</h3>
-![image](https://github.com/user-attachments/assets/70b5481d-4486-4631-bc6a-1beaefb2cac3)
+<img src=https://github.com/user-attachments/assets/70b5481d-4486-4631-bc6a-1beaefb2cac3>
 
 
