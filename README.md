@@ -17,7 +17,6 @@
 
 <h3>논리 모델</h3>
 <img src =https://github.com/user-attachments/assets/c5e10ee8-5ffa-401d-bd59-98d744f8dfe0>
-<h3>물리 모델</h3>
-<img src =https://github.com/user-attachments/assets/bb22e97c-20c7-45be-92bd-4b6a7f42091d>
+
 
 
