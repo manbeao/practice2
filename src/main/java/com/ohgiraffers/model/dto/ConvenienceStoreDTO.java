@@ -60,12 +60,12 @@ public class ConvenienceStoreDTO {
 
     @Override
     public String toString() {
-        return "편의점 상품 정보 {" +
+        return "편의점 상품 정보 [" +
                 "상품관리 코드 : " + code +
                 ", 상품 이름 : '" + name + '\'' +
                 ", 상품 가격 : " + price +
                 ", 상품 카테고리 : '" + category + '\'' +
                 ", 재고 여부 : '" + productStatus + '\'' +
-                '}';
+                ']';
     }
 }
