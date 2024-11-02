@@ -42,8 +42,8 @@ INSERT INTO CONVENIENCE_STORE(PRODUCT_CODE,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CA
 -- 관리자 테이블 생성
 DROP TABLE IF EXISTS STORE_MANAGER;
 CREATE TABLE IF NOT EXISTS STORE_MANAGER(
-                                            MANAGER_ID INT PRIMARY KEY AUTO_INCREMENT COMMENT '관리자 ID',
-                                            MANAGER_NAME VARCHAR(20) NOT NULL UNIQUE COMMENT '관리자이름',
+                                      MANAGER_ID INT PRIMARY KEY AUTO_INCREMENT COMMENT '관리자 ID',
+                                      MANAGER_NAME VARCHAR(20) NOT NULL UNIQUE COMMENT '관리자이름',
     MANAGER_PHONE VARCHAR(30) NOT NULL COMMENT '관리자 전화번호',
     PRODUCT_CATEGORY VARCHAR (30) NOT NULL COMMENT '상품 카테고리',
     PRODUCT_CODE INT COMMENT '상품관리코드',
@@ -52,11 +52,11 @@ CREATE TABLE IF NOT EXISTS STORE_MANAGER(
     )ENGINE=INNODB;
 
 INSERT INTO STORE_MANAGER(MANAGER_ID, MANAGER_NAME, MANAGER_PHONE, PRODUCT_CATEGORY,PRODUCT_CODE) VALUES
-                                                                                                      (NULL, '이은서', '01053758297', '식사', 3),
-                                                                                                      (NULL, '김민재', '01054929923', '음료', 7),
-                                                                                                      (NULL, '김나연', '01054929923', '주류', 12),
-                                                                                                      (NULL, '이경주', '01024858297', '위생용품', 16),
-                                                                                                      (NULL, '인지예', '01052830765', '기타', 23);
+                                                                                                (NULL, '이은서', '01053758297', '식사', 3),
+                                                                                                (NULL, '김민재', '01054929923', '음료', 7),
+                                                                                                (NULL, '김나연', '01054929923', '주류', 12),
+                                                                                                (NULL, '이경주', '01024858297', '위생용품', 16),
+                                                                                                (NULL, '인지예', '01052830765', '기타', 23);
 
 DROP TABLE IF EXISTS STAFF;
 CREATE TABLE IF NOT EXISTS STAFF(
