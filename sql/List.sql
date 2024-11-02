@@ -52,11 +52,11 @@ CREATE TABLE IF NOT EXISTS STORE_MANAGER(
     )ENGINE=INNODB;
 
 INSERT INTO STORE_MANAGER(MANAGER_ID, MANAGER_NAME, MANAGER_PHONE, PRODUCT_CATEGORY,PRODUCT_CODE) VALUES
-                                                                                                (NULL, '이은서', '01053758297', '식사', 3),
-                                                                                                (NULL, '김민재', '01054929923', '음료', 7),
-                                                                                                (NULL, '김나연', '01054929923', '주류', 12),
-                                                                                                (NULL, '이경주', '01024858297', '위생용품', 16),
-                                                                                                (NULL, '인지예', '01052830765', '기타', 23);
+                                                                                            (NULL, '이은서', '01053758297', '식사', 3),
+                                                                                            (NULL, '김민재', '01054929923', '음료', 7),
+                                                                                            (NULL, '김나연', '01054929923', '주류', 12),
+                                                                                            (NULL, '이경주', '01024858297', '위생용품', 16),
+                                                                                            (NULL, '인지예', '01052830765', '기타', 23);
 
 DROP TABLE IF EXISTS STAFF;
 CREATE TABLE IF NOT EXISTS STAFF(
