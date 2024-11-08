@@ -17,7 +17,7 @@ INSERT INTO CONVENIENCE_STORE(PRODUCT_CODE,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CA
 (NULL, '연세우유크림빵', 2500, '식사', 'O'),
 (NULL, '인기가요 샌드위치', 2000, '식사', 'X'),
 (NULL, '고기듬뿍도시락', 5000, '식사','O'),
-                                                                                                           (NULL, '짱구의 된장버터라면', 6000, '식사', 'X'),
+(NULL, '짱구의 된장버터라면', 6000, '식사', 'X'),
                                                                                                            (NULL, '삼다수', 1000, '음료', 'O'),
                                                                                                            (NULL, '바나나 우유단지', 1800, '음료', 'O'),
                                                                                                            (NULL, '콜라', 2000, '음료', 'O'),
