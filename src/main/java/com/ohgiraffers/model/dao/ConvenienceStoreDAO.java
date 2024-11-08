@@ -162,7 +162,7 @@ public class ConvenienceStoreDAO {
         List<StaffDTO> staffList = null;
 
         StaffDTO staffDTO = null;
-        System.out.print( "관리자 이름을 입력하세요 : ");
+        System.out.print( == "관리자 이름을 입력하세요 : ");
         String managerName = sc.nextLine();
         String query = prop.getProperty("myStaffList");
 
