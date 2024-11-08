@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS CONVENIENCE_STORE (
 
 -- 편의점 테이블에 값 넣기
 INSERT INTO CONVENIENCE_STORE(PRODUCT_CODE,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CATEGORY,PRODUCT_STATUS) VALUES
-                                                                                                           (NULL, '삼각김밥', 1500, '식사', 'O'),
+(NULL, '삼각김밥', 1500, '식사', 'O'),
                                                                                                            (NULL, '연세우유크림빵', 2500, '식사', 'O'),
                                                                                                            (NULL, '인기가요 샌드위치', 2000, '식사', 'X'),
                                                                                                            (NULL, '고기듬뿍도시락', 5000, '식사','O'),
